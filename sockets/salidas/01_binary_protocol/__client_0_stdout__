@@ -1,0 +1,10 @@
+money: $500 | knife: equipped | primary: not_equipped | secondary: glock, 30
+money: $500 | knife: equipped | primary: not_equipped | secondary: glock, 30
+money: $400 | knife: equipped | primary: awp, 30 | secondary: glock, 30
+money: $390 | knife: equipped | primary: awp, 40 | secondary: glock, 30
+money: $290 | knife: equipped | primary: ak-47, 30 | secondary: glock, 30
+money: $275 | knife: equipped | primary: ak-47, 45 | secondary: glock, 30
+money: $260 | knife: equipped | primary: ak-47, 60 | secondary: glock, 30
+money: $160 | knife: equipped | primary: m3, 30 | secondary: glock, 30
+money: $155 | knife: equipped | primary: m3, 35 | secondary: glock, 30
+money: $145 | knife: equipped | primary: m3, 35 | secondary: glock, 40

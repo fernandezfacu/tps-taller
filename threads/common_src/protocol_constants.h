@@ -1,0 +1,9 @@
+#ifndef PROTOCOL_CONSTANTS_H
+#define PROTOCOL_CONSTANTS_H
+
+#define CREATE_HEADER 0x6E
+#define JOIN_HEADER 0x6A
+#define LIST_HEADER 0x6C
+#define PLAY_HEADER 0x70
+
+#endif

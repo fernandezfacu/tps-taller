@@ -1,0 +1,10 @@
+ammo glock 10000
+buy awp
+ammo awp 10
+buy ak-47
+ammo ak-47 15
+ammo ak-47 15
+buy m3
+ammo m3 5
+ammo glock 10
+exit

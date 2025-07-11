@@ -1,0 +1,273 @@
+==00:00:00:00.000 36810== Memcheck, a memory error detector
+==00:00:00:00.000 36810== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==00:00:00:00.000 36810== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==00:00:00:00.000 36810== Command: ./server 1500
+==00:00:00:00.001 36810== Parent PID: 36809
+==00:00:00:00.001 36810== 
+==00:00:00:20.099 36810== Conditional jump or move depends on uninitialised value(s)
+==00:00:00:20.099 36810==    at 0x11AE90: TatetiServer::run() (tateti_server.cpp:22)
+==00:00:00:20.100 36810==    by 0x1166C4: main (main.cpp:16)
+==00:00:00:20.100 36810== 
+==00:00:00:46.048 36810== 
+==00:00:00:46.048 36810== More than 10000000 total errors detected.  I'm not reporting any more.
+==00:00:00:46.048 36810== Final error counts will be inaccurate.  Go fix your program!
+==00:00:00:46.048 36810== Rerun with --error-limit=no to disable this cutoff.  Note
+==00:00:00:46.048 36810== that errors may occur in your program without prior warning from
+==00:00:00:46.048 36810== Valgrind, because errors are no longer being displayed.
+==00:00:00:46.048 36810== 
+==00:00:02:00.088 36810== 
+==00:00:02:00.088 36810== Process terminating with default action of signal 15 (SIGTERM)
+==00:00:02:00.088 36810==    at 0x4B4C117: __futex_abstimed_wait_common64 (futex-internal.c:57)
+==00:00:02:00.088 36810==    by 0x4B4C117: __futex_abstimed_wait_common (futex-internal.c:87)
+==00:00:02:00.088 36810==    by 0x4B4C117: __futex_abstimed_wait_cancelable64 (futex-internal.c:139)
+==00:00:02:00.088 36810==    by 0x4B4EA40: __pthread_cond_wait_common (pthread_cond_wait.c:503)
+==00:00:02:00.088 36810==    by 0x4B4EA40: pthread_cond_wait@@GLIBC_2.3.2 (pthread_cond_wait.c:627)
+==00:00:02:00.088 36810==    by 0x11A478: TatetiGameProtected::make_play_and_wait_turn[abi:cxx11](char, int, int) (tateti_game_protected.cpp:33)
+==00:00:02:00.088 36810==    by 0x1117B8: ClientHandler::make_play(TatetiGameProtected&, std::pair<unsigned char, unsigned char>, char const&) (client_handler.cpp:79)
+==00:00:02:00.088 36810==    by 0x1119B5: ClientHandler::play_tateti(TatetiGameProtected&, char const&) (client_handler.cpp:96)
+==00:00:02:00.088 36810==    by 0x1137D4: PlayingState::handle_request(ClientHandler&) (client_state.cpp:14)
+==00:00:02:00.088 36810==    by 0x111B77: ClientHandler::handle_request() (client_handler.cpp:111)
+==00:00:02:00.088 36810==    by 0x111B99: ClientHandler::run() (client_handler.cpp:114)
+==00:00:02:00.088 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.089 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.089 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.089 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.089 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.089 36810==    by 0x110ABB: std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> > >::_M_run() (std_thread.h:211)
+==00:00:02:00.089 36810==    by 0x494B252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.089 36810==    by 0x4B4FAC2: start_thread (pthread_create.c:442)
+==00:00:02:00.089 36810==    by 0x4BE0A03: clone (clone.S:100)
+==00:00:02:00.096 36810== 
+==00:00:02:00.096 36810== FILE DESCRIPTORS: 7 open (3 std) at exit.
+==00:00:02:00.096 36810== Open AF_INET socket 6: 127.0.0.1:1500 <-> 127.0.0.1:60684
+==00:00:02:00.097 36810==    at 0x4BE245F: accept (accept.c:26)
+==00:00:02:00.097 36810==    by 0x10E5DF: Socket::accept() (socket.cpp:398)
+==00:00:02:00.097 36810==    by 0x10EACA: Acceptor::run() (acceptor.cpp:32)
+==00:00:02:00.097 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.098 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.098 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.098 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.099 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.099 36810==    by 0x110ABB: std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> > >::_M_run() (std_thread.h:211)
+==00:00:02:00.099 36810==    by 0x494B252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.099 36810==    by 0x4B4FAC2: start_thread (pthread_create.c:442)
+==00:00:02:00.099 36810==    by 0x4BE0A03: clone (clone.S:100)
+==00:00:02:00.099 36810== 
+==00:00:02:00.099 36810== Open AF_INET socket 5: 127.0.0.1:1500 <-> 127.0.0.1:60672
+==00:00:02:00.099 36810==    at 0x4BE245F: accept (accept.c:26)
+==00:00:02:00.099 36810==    by 0x10E5DF: Socket::accept() (socket.cpp:398)
+==00:00:02:00.099 36810==    by 0x10EACA: Acceptor::run() (acceptor.cpp:32)
+==00:00:02:00.099 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.099 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.099 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.099 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.099 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.099 36810==    by 0x110ABB: std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> > >::_M_run() (std_thread.h:211)
+==00:00:02:00.099 36810==    by 0x494B252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.099 36810==    by 0x4B4FAC2: start_thread (pthread_create.c:442)
+==00:00:02:00.099 36810==    by 0x4BE0A03: clone (clone.S:100)
+==00:00:02:00.099 36810== 
+==00:00:02:00.099 36810== Open AF_INET socket 4: 0.0.0.0:1500 <-> unbound
+==00:00:02:00.099 36810==    at 0x4BE2B3B: socket (syscall-template.S:120)
+==00:00:02:00.099 36810==    by 0x10DF83: Socket::Socket(char const*) (socket.cpp:112)
+==00:00:02:00.099 36810==    by 0x11AD5B: TatetiServer::TatetiServer(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (tateti_server.cpp:6)
+==00:00:02:00.099 36810==    by 0x1166B5: main (main.cpp:15)
+==00:00:02:00.099 36810== 
+==00:00:02:00.099 36810== Open file descriptor 3: /home/ffernandez/Escritorio/taller/tps/threads-2025c1-fernandezfacu/casos/01-one-match/__server_valgrind__
+==00:00:02:00.099 36810==    <inherited from parent>
+==00:00:02:00.099 36810== 
+==00:00:02:00.099 36810== 
+==00:00:02:00.099 36810== HEAP SUMMARY:
+==00:00:02:00.099 36810==     in use at exit: 78,241 bytes in 17 blocks
+==00:00:02:00.099 36810==   total heap usage: 28 allocs, 11 frees, 79,114 bytes allocated
+==00:00:02:00.099 36810== 
+==00:00:02:00.298 36810== 9 bytes in 3 blocks are still reachable in loss record 1 of 11
+==00:00:02:00.298 36810==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.298 36810==    by 0x119A3A: __gnu_cxx::new_allocator<char>::allocate(unsigned long, void const*) (new_allocator.h:127)
+==00:00:02:00.298 36810==    by 0x119843: std::allocator_traits<std::allocator<char> >::allocate(std::allocator<char>&, unsigned long) (alloc_traits.h:464)
+==00:00:02:00.298 36810==    by 0x119639: std::_Vector_base<char, std::allocator<char> >::_M_allocate(unsigned long) (stl_vector.h:346)
+==00:00:02:00.298 36810==    by 0x119250: std::_Vector_base<char, std::allocator<char> >::_M_create_storage(unsigned long) (stl_vector.h:361)
+==00:00:02:00.298 36810==    by 0x118D9C: std::_Vector_base<char, std::allocator<char> >::_Vector_base(unsigned long, std::allocator<char> const&) (stl_vector.h:305)
+==00:00:02:00.298 36810==    by 0x119C4A: std::vector<char, std::allocator<char> >::vector(std::vector<char, std::allocator<char> > const&) (stl_vector.h:555)
+==00:00:02:00.298 36810==    by 0x119B52: void std::_Construct<std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > const&>(std::vector<char, std::allocator<char> >*, std::vector<char, std::allocator<char> > const&) (stl_construct.h:119)
+==00:00:02:00.298 36810==    by 0x119941: std::vector<char, std::allocator<char> >* std::__uninitialized_fill_n<false>::__uninit_fill_n<std::vector<char, std::allocator<char> >*, unsigned long, std::vector<char, std::allocator<char> > >(std::vector<char, std::allocator<char> >*, unsigned long, std::vector<char, std::allocator<char> > const&) (stl_uninitialized.h:237)
+==00:00:02:00.298 36810==    by 0x11978B: std::vector<char, std::allocator<char> >* std::uninitialized_fill_n<std::vector<char, std::allocator<char> >*, unsigned long, std::vector<char, std::allocator<char> > >(std::vector<char, std::allocator<char> >*, unsigned long, std::vector<char, std::allocator<char> > const&) (stl_uninitialized.h:297)
+==00:00:02:00.298 36810==    by 0x1194B1: std::vector<char, std::allocator<char> >* std::__uninitialized_fill_n_a<std::vector<char, std::allocator<char> >*, unsigned long, std::vector<char, std::allocator<char> >, std::vector<char, std::allocator<char> > >(std::vector<char, std::allocator<char> >*, unsigned long, std::vector<char, std::allocator<char> > const&, std::allocator<std::vector<char, std::allocator<char> > >&) (stl_uninitialized.h:410)
+==00:00:02:00.298 36810==    by 0x119067: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::_M_fill_initialize(unsigned long, std::vector<char, std::allocator<char> > const&) (stl_vector.h:1596)
+==00:00:02:00.298 36810==    by 0x118A27: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::vector(unsigned long, std::vector<char, std::allocator<char> > const&, std::allocator<std::vector<char, std::allocator<char> > > const&) (stl_vector.h:525)
+==00:00:02:00.298 36810==    by 0x117C33: TatetiGame::TatetiGame() (tateti_game.cpp:8)
+==00:00:02:00.298 36810==    by 0x11A171: TatetiGameProtected::TatetiGameProtected() (tateti_game_protected.cpp:6)
+==00:00:02:00.298 36810==    by 0x113B95: GameListProtected::create_game(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (game_list_protected.cpp:16)
+==00:00:02:00.298 36810==    by 0x110FDB: ClientHandler::create_game(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (client_handler.cpp:22)
+==00:00:02:00.298 36810==    by 0x1115B8: ClientHandler::handle_request_waiting_for_game() (client_handler.cpp:62)
+==00:00:02:00.298 36810==    by 0x11374D: WaitingForGameState::handle_request(ClientHandler&) (client_state.cpp:8)
+==00:00:02:00.298 36810==    by 0x111B77: ClientHandler::handle_request() (client_handler.cpp:111)
+==00:00:02:00.298 36810== 
+==00:00:02:00.298 36810== 24 bytes in 1 blocks are still reachable in loss record 2 of 11
+==00:00:02:00.298 36810==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.298 36810==    by 0x112149: std::_MakeUniq<PlayingState>::__single_object std::make_unique<PlayingState, TatetiGameProtected&, char const&>(TatetiGameProtected&, char const&) (unique_ptr.h:962)
+==00:00:02:00.298 36810==    by 0x111012: ClientHandler::create_game(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (client_handler.cpp:26)
+==00:00:02:00.298 36810==    by 0x1115B8: ClientHandler::handle_request_waiting_for_game() (client_handler.cpp:62)
+==00:00:02:00.298 36810==    by 0x11374D: WaitingForGameState::handle_request(ClientHandler&) (client_state.cpp:8)
+==00:00:02:00.298 36810==    by 0x111B77: ClientHandler::handle_request() (client_handler.cpp:111)
+==00:00:02:00.298 36810==    by 0x111B99: ClientHandler::run() (client_handler.cpp:114)
+==00:00:02:00.298 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.298 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.298 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.298 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.298 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.298 36810==    by 0x110ABB: std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> > >::_M_run() (std_thread.h:211)
+==00:00:02:00.298 36810==    by 0x494B252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.298 36810==    by 0x4B4FAC2: start_thread (pthread_create.c:442)
+==00:00:02:00.298 36810==    by 0x4BE0A03: clone (clone.S:100)
+==00:00:02:00.298 36810== 
+==00:00:02:00.298 36810== 24 bytes in 1 blocks are still reachable in loss record 3 of 11
+==00:00:02:00.298 36810==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.298 36810==    by 0x112149: std::_MakeUniq<PlayingState>::__single_object std::make_unique<PlayingState, TatetiGameProtected&, char const&>(TatetiGameProtected&, char const&) (unique_ptr.h:962)
+==00:00:02:00.298 36810==    by 0x11124A: ClientHandler::join_game(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (client_handler.cpp:40)
+==00:00:02:00.298 36810==    by 0x1115DF: ClientHandler::handle_request_waiting_for_game() (client_handler.cpp:64)
+==00:00:02:00.298 36810==    by 0x11374D: WaitingForGameState::handle_request(ClientHandler&) (client_state.cpp:8)
+==00:00:02:00.298 36810==    by 0x111B77: ClientHandler::handle_request() (client_handler.cpp:111)
+==00:00:02:00.298 36810==    by 0x111B99: ClientHandler::run() (client_handler.cpp:114)
+==00:00:02:00.298 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.298 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.298 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.298 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.298 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.299 36810==    by 0x110ABB: std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> > >::_M_run() (std_thread.h:211)
+==00:00:02:00.299 36810==    by 0x494B252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.299 36810==    by 0x4B4FAC2: start_thread (pthread_create.c:442)
+==00:00:02:00.299 36810==    by 0x4BE0A03: clone (clone.S:100)
+==00:00:02:00.299 36810== 
+==00:00:02:00.299 36810== 32 bytes in 1 blocks are still reachable in loss record 4 of 11
+==00:00:02:00.299 36810==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.299 36810==    by 0x10F5C7: std::thread::thread<void (Thread::*)(), Thread*, void>(void (Thread::*&&)(), Thread*&&) (std_thread.h:143)
+==00:00:02:00.299 36810==    by 0x10F1EA: Thread::start() (thread.h:36)
+==00:00:02:00.299 36810==    by 0x11AE7D: TatetiServer::run() (tateti_server.cpp:21)
+==00:00:02:00.299 36810==    by 0x1166C4: main (main.cpp:16)
+==00:00:02:00.299 36810== 
+==00:00:02:00.299 36810== 64 bytes in 2 blocks are still reachable in loss record 5 of 11
+==00:00:02:00.299 36810==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.299 36810==    by 0x10F5C7: std::thread::thread<void (Thread::*)(), Thread*, void>(void (Thread::*&&)(), Thread*&&) (std_thread.h:143)
+==00:00:02:00.299 36810==    by 0x10F1EA: Thread::start() (thread.h:36)
+==00:00:02:00.299 36810==    by 0x10EB1B: Acceptor::run() (acceptor.cpp:35)
+==00:00:02:00.299 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.299 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.299 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.299 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.299 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.299 36810==    by 0x110ABB: std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> > >::_M_run() (std_thread.h:211)
+==00:00:02:00.299 36810==    by 0x494B252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.299 36810==    by 0x4B4FAC2: start_thread (pthread_create.c:442)
+==00:00:02:00.299 36810==    by 0x4BE0A03: clone (clone.S:100)
+==00:00:02:00.299 36810== 
+==00:00:02:00.299 36810== 72 bytes in 1 blocks are still reachable in loss record 6 of 11
+==00:00:02:00.299 36810==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.299 36810==    by 0x119B08: __gnu_cxx::new_allocator<std::vector<char, std::allocator<char> > >::allocate(unsigned long, void const*) (new_allocator.h:127)
+==00:00:02:00.299 36810==    by 0x1198C1: std::allocator_traits<std::allocator<std::vector<char, std::allocator<char> > > >::allocate(std::allocator<std::vector<char, std::allocator<char> > >&, unsigned long) (alloc_traits.h:464)
+==00:00:02:00.299 36810==    by 0x11971D: std::_Vector_base<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::_M_allocate(unsigned long) (stl_vector.h:346)
+==00:00:02:00.299 36810==    by 0x119408: std::_Vector_base<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::_M_create_storage(unsigned long) (stl_vector.h:361)
+==00:00:02:00.299 36810==    by 0x118FA0: std::_Vector_base<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::_Vector_base(unsigned long, std::allocator<std::vector<char, std::allocator<char> > > const&) (stl_vector.h:305)
+==00:00:02:00.299 36810==    by 0x118A10: std::vector<std::vector<char, std::allocator<char> >, std::allocator<std::vector<char, std::allocator<char> > > >::vector(unsigned long, std::vector<char, std::allocator<char> > const&, std::allocator<std::vector<char, std::allocator<char> > > const&) (stl_vector.h:524)
+==00:00:02:00.299 36810==    by 0x117C33: TatetiGame::TatetiGame() (tateti_game.cpp:8)
+==00:00:02:00.299 36810==    by 0x11A171: TatetiGameProtected::TatetiGameProtected() (tateti_game_protected.cpp:6)
+==00:00:02:00.299 36810==    by 0x113B95: GameListProtected::create_game(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (game_list_protected.cpp:16)
+==00:00:02:00.299 36810==    by 0x110FDB: ClientHandler::create_game(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (client_handler.cpp:22)
+==00:00:02:00.299 36810==    by 0x1115B8: ClientHandler::handle_request_waiting_for_game() (client_handler.cpp:62)
+==00:00:02:00.299 36810==    by 0x11374D: WaitingForGameState::handle_request(ClientHandler&) (client_state.cpp:8)
+==00:00:02:00.299 36810==    by 0x111B77: ClientHandler::handle_request() (client_handler.cpp:111)
+==00:00:02:00.299 36810==    by 0x111B99: ClientHandler::run() (client_handler.cpp:114)
+==00:00:02:00.299 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.299 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.299 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.299 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.299 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.299 36810== 
+==00:00:02:00.299 36810== 160 bytes in 2 blocks are still reachable in loss record 7 of 11
+==00:00:02:00.299 36810==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.299 36810==    by 0x1109B9: __gnu_cxx::new_allocator<std::_List_node<ClientHandler> >::allocate(unsigned long, void const*) (new_allocator.h:127)
+==00:00:02:00.299 36810==    by 0x110798: std::allocator_traits<std::allocator<std::_List_node<ClientHandler> > >::allocate(std::allocator<std::_List_node<ClientHandler> >&, unsigned long) (alloc_traits.h:464)
+==00:00:02:00.299 36810==    by 0x110538: std::__cxx11::_List_base<ClientHandler, std::allocator<ClientHandler> >::_M_get_node() (stl_list.h:443)
+==00:00:02:00.299 36810==    by 0x110169: std::_List_node<ClientHandler>* std::__cxx11::list<ClientHandler, std::allocator<ClientHandler> >::_M_create_node<Socket, GameListProtected&>(Socket&&, GameListProtected&) (stl_list.h:635)
+==00:00:02:00.299 36810==    by 0x10FD4C: void std::__cxx11::list<ClientHandler, std::allocator<ClientHandler> >::_M_insert<Socket, GameListProtected&>(std::_List_iterator<ClientHandler>, Socket&&, GameListProtected&) (stl_list.h:1912)
+==00:00:02:00.299 36810==    by 0x10F883: ClientHandler& std::__cxx11::list<ClientHandler, std::allocator<ClientHandler> >::emplace_back<Socket, GameListProtected&>(Socket&&, GameListProtected&) (stl_list.h:1228)
+==00:00:02:00.299 36810==    by 0x10EB00: Acceptor::run() (acceptor.cpp:34)
+==00:00:02:00.299 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.299 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.299 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.299 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.299 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.299 36810==    by 0x110ABB: std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> > >::_M_run() (std_thread.h:211)
+==00:00:02:00.299 36810==    by 0x494B252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.299 36810==    by 0x4B4FAC2: start_thread (pthread_create.c:442)
+==00:00:02:00.299 36810==    by 0x4BE0A03: clone (clone.S:100)
+==00:00:02:00.299 36810== 
+==00:00:02:00.299 36810== 192 bytes in 1 blocks are still reachable in loss record 8 of 11
+==00:00:02:00.299 36810==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.299 36810==    by 0x1163E2: __gnu_cxx::new_allocator<std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> > >::allocate(unsigned long, void const*) (new_allocator.h:127)
+==00:00:02:00.299 36810==    by 0x11618D: std::allocator_traits<std::allocator<std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> > > >::allocate(std::allocator<std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> > >&, unsigned long) (alloc_traits.h:464)
+==00:00:02:00.299 36810==    by 0x115D84: std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> > >::_M_get_node() (stl_tree.h:561)
+==00:00:02:00.299 36810==    by 0x115516: std::_Rb_tree_node<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> >* std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> > >::_M_create_node<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, TatetiGameProtected>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, TatetiGameProtected&&) (stl_tree.h:611)
+==00:00:02:00.300 36810==    by 0x114C99: std::pair<std::_Rb_tree_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> >, bool> std::_Rb_tree<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected>, std::_Select1st<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> >, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> > >::_M_emplace_unique<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, TatetiGameProtected>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, TatetiGameProtected&&) (stl_tree.h:2384)
+==00:00:02:00.300 36810==    by 0x11456B: std::pair<std::_Rb_tree_iterator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> >, bool> std::map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, TatetiGameProtected, std::less<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, TatetiGameProtected> > >::emplace<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, TatetiGameProtected>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, TatetiGameProtected&&) (stl_map.h:577)
+==00:00:02:00.300 36810==    by 0x113BAE: GameListProtected::create_game(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (game_list_protected.cpp:16)
+==00:00:02:00.300 36810==    by 0x110FDB: ClientHandler::create_game(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (client_handler.cpp:22)
+==00:00:02:00.300 36810==    by 0x1115B8: ClientHandler::handle_request_waiting_for_game() (client_handler.cpp:62)
+==00:00:02:00.300 36810==    by 0x11374D: WaitingForGameState::handle_request(ClientHandler&) (client_state.cpp:8)
+==00:00:02:00.300 36810==    by 0x111B77: ClientHandler::handle_request() (client_handler.cpp:111)
+==00:00:02:00.300 36810==    by 0x111B99: ClientHandler::run() (client_handler.cpp:114)
+==00:00:02:00.300 36810==    by 0x10F271: Thread::main() (thread.h:43)
+==00:00:02:00.300 36810==    by 0x110C73: void std::__invoke_impl<void, void (Thread::*)(), Thread*>(std::__invoke_memfun_deref, void (Thread::*&&)(), Thread*&&) (invoke.h:74)
+==00:00:02:00.300 36810==    by 0x110BC6: std::__invoke_result<void (Thread::*)(), Thread*>::type std::__invoke<void (Thread::*)(), Thread*>(void (Thread::*&&)(), Thread*&&) (invoke.h:96)
+==00:00:02:00.300 36810==    by 0x110B26: void std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::_M_invoke<0ul, 1ul>(std::_Index_tuple<0ul, 1ul>) (std_thread.h:259)
+==00:00:02:00.300 36810==    by 0x110ADB: std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> >::operator()() (std_thread.h:266)
+==00:00:02:00.300 36810==    by 0x110ABB: std::thread::_State_impl<std::thread::_Invoker<std::tuple<void (Thread::*)(), Thread*> > >::_M_run() (std_thread.h:211)
+==00:00:02:00.300 36810==    by 0x494B252: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.300 36810== 
+==00:00:02:00.300 36810== 864 bytes in 3 blocks are possibly lost in loss record 9 of 11
+==00:00:02:00.300 36810==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.300 36810==    by 0x40147D9: calloc (rtld-malloc.h:44)
+==00:00:02:00.300 36810==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
+==00:00:02:00.300 36810==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
+==00:00:02:00.300 36810==    by 0x4B507B4: allocate_stack (allocatestack.c:430)
+==00:00:02:00.300 36810==    by 0x4B507B4: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
+==00:00:02:00.300 36810==    by 0x494B328: std::thread::_M_start_thread(std::unique_ptr<std::thread::_State, std::default_delete<std::thread::_State> >, void (*)()) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.300 36810==    by 0x10F601: std::thread::thread<void (Thread::*)(), Thread*, void>(void (Thread::*&&)(), Thread*&&) (std_thread.h:143)
+==00:00:02:00.300 36810==    by 0x10F1EA: Thread::start() (thread.h:36)
+==00:00:02:00.300 36810==    by 0x11AE7D: TatetiServer::run() (tateti_server.cpp:21)
+==00:00:02:00.300 36810==    by 0x1166C4: main (main.cpp:16)
+==00:00:02:00.300 36810== 
+==00:00:02:00.300 36810== 4,096 bytes in 1 blocks are still reachable in loss record 10 of 11
+==00:00:02:00.300 36810==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.300 36810==    by 0x4B39BA3: _IO_file_doallocate (filedoalloc.c:101)
+==00:00:02:00.300 36810==    by 0x4B48CDF: _IO_doallocbuf (genops.c:347)
+==00:00:02:00.300 36810==    by 0x4B47CDB: _IO_file_underflow@@GLIBC_2.2.5 (fileops.c:485)
+==00:00:02:00.300 36810==    by 0x4B48D95: _IO_default_uflow (genops.c:362)
+==00:00:02:00.300 36810==    by 0x4B42A97: getc (getc.c:40)
+==00:00:02:00.300 36810==    by 0x49818A0: __gnu_cxx::stdio_sync_filebuf<char, std::char_traits<char> >::uflow() (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.300 36810==    by 0x49900CD: std::istream::get(char&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.300 36810==    by 0x11ADFE: TatetiServer::should_close() (tateti_server.cpp:10)
+==00:00:02:00.300 36810==    by 0x11AE8A: TatetiServer::run() (tateti_server.cpp:22)
+==00:00:02:00.300 36810==    by 0x1166C4: main (main.cpp:16)
+==00:00:02:00.300 36810== 
+==00:00:02:00.300 36810== 72,704 bytes in 1 blocks are still reachable in loss record 11 of 11
+==00:00:02:00.300 36810==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==00:00:02:00.300 36810==    by 0x4919939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+==00:00:02:00.300 36810==    by 0x400647D: call_init.part.0 (dl-init.c:70)
+==00:00:02:00.300 36810==    by 0x4006567: call_init (dl-init.c:33)
+==00:00:02:00.300 36810==    by 0x4006567: _dl_init (dl-init.c:117)
+==00:00:02:00.300 36810==    by 0x40202C9: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+==00:00:02:00.300 36810==    by 0x1: ???
+==00:00:02:00.300 36810==    by 0x1FFF000146: ???
+==00:00:02:00.300 36810==    by 0x1FFF00014F: ???
+==00:00:02:00.300 36810== 
+==00:00:02:00.300 36810== LEAK SUMMARY:
+==00:00:02:00.300 36810==    definitely lost: 0 bytes in 0 blocks
+==00:00:02:00.300 36810==    indirectly lost: 0 bytes in 0 blocks
+==00:00:02:00.300 36810==      possibly lost: 864 bytes in 3 blocks
+==00:00:02:00.300 36810==    still reachable: 77,377 bytes in 14 blocks
+==00:00:02:00.300 36810==         suppressed: 0 bytes in 0 blocks
+==00:00:02:00.300 36810== 
+==00:00:02:00.300 36810== Use --track-origins=yes to see where uninitialised values come from
+==00:00:02:00.300 36810== For lists of detected and suppressed errors, rerun with: -s
+==00:00:02:00.300 36810== ERROR SUMMARY: 10000001 errors from 2 contexts (suppressed: 0 from 0)
